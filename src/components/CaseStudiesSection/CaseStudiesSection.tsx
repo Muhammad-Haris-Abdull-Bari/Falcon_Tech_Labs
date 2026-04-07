@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CaseStudyCard } from './CaseStudyCard';
+import { Button } from '../Button/Button';
 import styles from './CaseStudiesSection.module.css';
 
 const caseStudies = [
@@ -50,7 +51,7 @@ export const CaseStudiesSection: React.FC = () => {
   return (
     <section className={styles.section}>
       <header className={styles.header}>
-        <motion.span 
+        <motion.span
           className={styles.subTitle}
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -58,7 +59,7 @@ export const CaseStudiesSection: React.FC = () => {
         >
           Portfolio
         </motion.span>
-        <motion.h2 
+        <motion.h2
           className={styles.title}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +72,7 @@ export const CaseStudiesSection: React.FC = () => {
 
       <div className={styles.grid}>
         {caseStudies.map((study, index) => (
-          <CaseStudyCard 
+          <CaseStudyCard
             key={index}
             {...study}
           />
@@ -79,16 +80,9 @@ export const CaseStudiesSection: React.FC = () => {
       </div>
 
       <footer className={styles.footerArea}>
-        <motion.button 
-          className={styles.viewAllBtn}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        <Button>
           VIEW ALL PROJECTS
-        </motion.button>
+        </Button>
       </footer>
     </section>
   );
