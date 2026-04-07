@@ -85,7 +85,7 @@ export const ExperienceSection: React.FC = () => {
     <section className="experience-section" ref={sectionRef}>
       <div className="experience-bg">
         <img
-          src="../../../Images_&_Videos/ExperienceSection.jpg"
+          src="/Images_&_Videos/ExperienceSection.jpg"
           alt="Modern Workspace"
         />
         <div className="experience-overlay" />

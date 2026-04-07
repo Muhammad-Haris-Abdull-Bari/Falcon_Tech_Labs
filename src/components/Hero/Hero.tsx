@@ -1,7 +1,7 @@
 import { Button } from '../Button/Button';
 import './Hero.css';
 
-const heroImage = new URL('../../../Images_&_Videos/umbra-12-scaled.avif', import.meta.url).href;
+const heroImage = '/Images_&_Videos/umbra-12-scaled.avif';
 
 export const Hero: React.FC = () => {
   return (

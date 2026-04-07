@@ -31,27 +31,15 @@
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 12px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  perspective: 1200px;
 }
 
+/* Sirf jo change hota hai scroll pe */
 .brutal-nav.scrolled {
-  top: 1.5rem;
-  padding: 0.8rem 2rem;
   width: auto;
-  /* header width - scroll */
   max-width: 95%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  mix-blend-mode: normal;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
 .nav-logo {
