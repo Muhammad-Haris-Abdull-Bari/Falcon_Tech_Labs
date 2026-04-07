@@ -1,0 +1,199 @@
+.brutal-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: padding 0.7s var(--easing), top 0.7s var(--easing),
+    width 0.7s var(--easing), background 0.5s var(--easing),
+    border-radius 0.7s var(--easing);
+  mix-blend-mode: exclusion;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+.brutal-nav.scrolled {
+  top: 1.5rem;
+  padding: 0.8rem 2rem;
+  width: auto;
+  /* header width - scroll */
+  min-width: 800px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  mix-blend-mode: normal;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.nav-logo {
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: -2px;
+  color: #fff;
+  user-select: none;
+  position: relative;
+}
+
+.nav-logo:hover {
+  animation: glitch-anim 0.3s infinite;
+}
+
+.nav-logo::before,
+.nav-logo::after {
+  content: "M. HARIS";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  opacity: 0.8;
+  display: none;
+}
+
+.nav-logo:hover::before,
+.nav-logo:hover::after {
+  display: block;
+}
+
+.nav-logo:hover::before {
+  color: var(--secondary);
+  z-index: -1;
+  transform: translate(-2px, -2px);
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
+}
+
+.nav-logo:hover::after {
+  color: var(--accent);
+  z-index: -2;
+  transform: translate(2px, 2px);
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    transform: translate(0);
+  }
+
+  100% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+.nav-menu {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px;
+}
+
+.nav-link::before {
+  content: '>';
+  position: absolute;
+  left: -10px;
+  opacity: 0;
+  transition: all 0.2s;
+  color: var(--accent);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+  left: 0;
+}
+
+.nav-link:hover {
+  padding-left: 15px;
+}
+
+.cta-btn {
+  position: relative;
+  padding: 0.8rem 2rem;
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  font-family: 'Space Grotesk';
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
+  z-index: 1;
+}
+
+.cta-btn span {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s;
+}
+
+.cta-btn:hover span {
+  color: #000;
+}
+
+.cta-btn:hover::after {
+  transform: translateX(0);
+}
+
+.brutal-nav.scrolled .cta-btn {
+  padding: 0.6rem 1.5rem;
+}
