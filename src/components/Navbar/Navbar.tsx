@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
         onMouseMove={handleMagneticMove}
         onMouseLeave={handleMagneticLeave}
       >
-        <img src="../../../Images_&_Videos/PNG-LOGO-01.png" alt="Falcon Tech Labs Logo" className="logo-img" />
+        <img src="Images_&_Videos/PNG-LOGO-01.png" alt="Falcon Tech Labs Logo" className="logo-img" />
       </a>
 
       {/* Hamburger Toggle */}
