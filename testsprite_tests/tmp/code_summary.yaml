@@ -1,0 +1,59 @@
+version: "2"
+type: frontend
+tech_stack:
+  - react
+  - typescript
+  - vite
+  - gsap
+  - three.js
+  - tailwindcss
+  - framer-motion
+routes:
+  - path: /
+    file: src/App.tsx
+    auth_required: false
+    description: Main single-page portfolio landing page
+features:
+  - name: Navigation
+    description: Sticky navigation bar with interactive elements
+    files:
+      - src/components/Navbar/Navbar.tsx
+    entry_route: /
+    user_interactions:
+      - Scroll to see sticky behavior
+      - Hover over nav links
+      - Click "LET'S TALK" button
+    auth_required: false
+  - name: Hero Section
+    description: High-impact introduction with branding
+    files:
+      - src/components/Hero/Hero.tsx
+    entry_route: /
+    user_interactions:
+      - View animations on load
+    auth_required: false
+  - name: Logo Marquee
+    description: Infinite scrolling marquee for logos
+    files:
+      - src/components/Marquee/Marquee.tsx
+    entry_route: /
+    user_interactions:
+      - Hover to see interaction effects
+    auth_required: false
+  - name: Interactive 3D Background
+    description: Immersive 3D visuals using Three.js
+    files:
+      - src/components/Background3D/Background3D.tsx
+    entry_route: /
+    user_interactions:
+      - Move mouse to interact with background
+    auth_required: false
+  - name: Smooth Scrolling
+    description: GSAP ScrollSmoother integration for premium experience
+    files:
+      - src/App.tsx
+    entry_route: /
+    user_interactions:
+      - Scroll through the page
+    auth_required: false
+known_limitations: []

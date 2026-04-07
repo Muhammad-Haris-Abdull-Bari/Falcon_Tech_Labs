@@ -10,6 +10,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 import { Navbar } from './components/Navbar/Navbar';
 import { Cursor } from './components/Cursor/Cursor';
 import { Hero } from './components/Hero/Hero';
+import { Marquee } from './components/Marquee/Marquee';
 import { SectionDark } from './components/SectionDark/SectionDark';
 import { Footer } from './components/Footer/Footer';
 import { Background3D } from './components/Background3D/Background3D';
@@ -38,7 +39,7 @@ const App: React.FC = () => {
 
       // Use visual velocity from ScrollSmoother instead of instant window.scrollY
       const velocity = smoother.getVelocity();
-      
+
       const maxSkew = 5.0;
       // Adjust velocity multiplier since smoother.getVelocity() values are different than raw delta
       const speed = Math.min(Math.max(velocity * -0.002, -maxSkew), maxSkew);
@@ -64,7 +65,7 @@ const App: React.FC = () => {
     <>
       {/* Noise Overlay */}
       <div className="noise"></div>
-      
+
       {/* Custom Cursor */}
       <Cursor />
 
@@ -78,9 +79,10 @@ const App: React.FC = () => {
         <div id="scroll-content" ref={contentRef}>
           {/* Main Content Sections */}
           <Hero />
+          <Marquee />
 
           <SectionDark align="left">
-            WE BUILD <span>DIGITAL EXPERIENCES</span> THAT DEFY GRAVITY. NO TEMPLATES. NO LIMITS. JUST <span>PURE CODE</span> AND <span>RAW AESTHETICS</span>.
+            WE BUILD <span>DIGITAL EXPERIENCES</span> THAT DEFY GRAVITY. NO TEMPLATES. NO LIMITS. JUST <span>PURE CODE</span> AND <span>RAW AESTHETICS.</span>
           </SectionDark>
 
           <SectionDark align="right">

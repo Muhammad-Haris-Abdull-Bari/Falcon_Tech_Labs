@@ -1,0 +1,504 @@
+[
+  {
+    "id": "TC001",
+    "title": "Sticky navbar remains usable while scrolling the page",
+    "description": "Verifies that a visitor can scroll down the page and still see and use the navigation bar as a sticky element throughout.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down the page until well past the hero section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll further down through additional sections"
+      },
+      {
+        "type": "action",
+        "description": "Click the primary contact call-to-action in the navigation bar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation bar remains visible while scrolling"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a contact/let’s-talk intent outcome is displayed (such as a contact section or contact prompt)"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Smooth scrolling works end-to-end through the page",
+    "description": "Verifies the user can scroll through the full landing page with smooth, eased scrolling behavior.",
+    "category": "Smooth Scrolling",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll steadily from near the top toward the bottom of the page"
+      },
+      {
+        "type": "action",
+        "description": "Scroll back upward toward the top of the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page scrolls smoothly and remains responsive without blocking basic scrolling"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Hero renders on first load and plays entrance/idle animation",
+    "description": "Verifies that the hero section appears on initial page load and its motion runs without requiring user interaction.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the initial hero content to finish appearing"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero section is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify hero motion is observable (entrance and/or idle animation occurs)"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Navbar links can jump/scroll to intended sections without being obscured",
+    "description": "Verifies that clicking a navbar link brings the user to the corresponding section and the sticky navbar does not overlap/hide the section start.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click a navigation link that jumps to a lower section of the page"
+      },
+      {
+        "type": "action",
+        "description": "Scroll slightly up and down near the top of the destination section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the intended destination section is in view after navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the destination content is not obscured by the sticky navigation bar"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "User can scroll from hero into lower content smoothly",
+    "description": "Verifies that a visitor can transition from the hero section into the rest of the page content with normal scrolling interactions.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down from the hero section into the next section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify additional content below the hero is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify scrolling feels continuous without getting stuck at the hero section"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Logo marquee continuously loops on view",
+    "description": "Verifies that the logo marquee is visible during browsing and continuously scrolls to communicate credibility at a glance.",
+    "category": "Logo Marquee",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll until the logo marquee is in view"
+      },
+      {
+        "type": "action",
+        "description": "Wait briefly while watching the marquee"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the logo marquee is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the marquee content moves continuously to indicate an infinite loop"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "3D background reacts to pointer movement and returns to idle",
+    "description": "Verifies the 3D background responds to mouse movement and returns to an idle state when pointer movement stops.",
+    "category": "Interactive 3D Background",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the page to finish initial rendering"
+      },
+      {
+        "type": "action",
+        "description": "Move the mouse across the viewport"
+      },
+      {
+        "type": "action",
+        "description": "Stop moving the mouse"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 3D background visibly reacts to pointer movement and then settles into an idle motion when the pointer is still"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Smooth scrolling rest state after scroll stops",
+    "description": "Verifies that after the user stops scrolling the page settles into a stable rest state without continued unintended movement.",
+    "category": "Smooth Scrolling",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down a moderate amount"
+      },
+      {
+        "type": "action",
+        "description": "Stop scrolling"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page settles and remains stable when scrolling stops"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Navigation link hover feedback is discoverable",
+    "description": "Verifies that hovering over navigation links provides interactive feedback that helps a recruiter understand the navbar is interactive.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer over one navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navigation link shows a hover feedback state on pointer over and returns to normal when the pointer leaves"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Marquee hover interaction affects logos and resumes after pointer leave",
+    "description": "Verifies that hovering over the marquee triggers an interaction effect and that the marquee returns to its continuous motion after the pointer leaves.",
+    "category": "Logo Marquee",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll until the logo marquee is in view"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer over the marquee area"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the marquee area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an interaction effect occurs while hovering over the marquee"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the marquee resumes continuous movement after the pointer leaves"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Hero animations do not replay unexpectedly during minor scrolling",
+    "description": "Verifies that after the hero has played, minor scroll interactions do not cause the entrance animation to replay in a distracting way.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the hero entrance animation to complete"
+      },
+      {
+        "type": "action",
+        "description": "Scroll slightly down and then slightly back up to the hero area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hero content remains stable without re-running the full entrance animation unexpectedly"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Rapid scroll does not break sticky navigation usability",
+    "description": "Verifies that fast user scrolling still keeps navigation usable and visible without blocking basic scrolling interactions.",
+    "category": "Navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly down the page in several quick gestures"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly back up toward the top"
+      },
+      {
+        "type": "action",
+        "description": "Click the primary contact call-to-action in the navigation bar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify basic scrolling remains responsive and not blocked"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the primary contact call-to-action remains reachable and clickable"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "3D background remains stable while scrolling through the page",
+    "description": "Verifies the 3D background remains visible and stable while the user scrolls through the page.",
+    "category": "Interactive 3D Background",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down through multiple sections"
+      },
+      {
+        "type": "action",
+        "description": "Scroll back up toward the top of the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 3D background remains rendered and does not visibly misalign or disappear during scrolling"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Smooth scrolling remains responsive during very fast scroll input",
+    "description": "Verifies fast user scrolling does not cause the page to become unresponsive or visually break while scroll smoothing is active.",
+    "category": "Smooth Scrolling",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly down the page"
+      },
+      {
+        "type": "action",
+        "description": "Scroll rapidly up the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the page remains responsive and scrolling remains functional during rapid scroll interactions"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Smooth scrolling continues working after viewport resize mid-scroll",
+    "description": "Verifies scroll smoothing continues to work after resizing the viewport while partway down the page.",
+    "category": "Smooth Scrolling",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down to a mid-page position"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrower width"
+      },
+      {
+        "type": "action",
+        "description": "Continue scrolling down"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify smooth scrolling continues to function correctly after resizing mid-scroll"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Rapid pointer enter/leave on marquee does not leave it stuck",
+    "description": "Verifies that quickly moving the pointer in and out of the marquee does not permanently pause or visually break the marquee animation.",
+    "category": "Logo Marquee",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll until the logo marquee is in view"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer onto the marquee area and off of it repeatedly"
+      },
+      {
+        "type": "action",
+        "description": "Wait briefly to observe post-interaction behavior"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the marquee remains displayed without visual breakage"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the marquee continues moving after the rapid pointer interactions"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "3D background adapts to viewport resize",
+    "description": "Verifies the 3D background remains usable and visually present after resizing the viewport.",
+    "category": "Interactive 3D Background",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrower width"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport back to a wider width"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 3D background remains visible and appropriately sized after the viewport size changes"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "3D background handles rapid pointer enter/leave without breaking",
+    "description": "Verifies the 3D background continues rendering correctly when the pointer rapidly enters and leaves the viewport.",
+    "category": "Interactive 3D Background",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Move the mouse into the viewport"
+      },
+      {
+        "type": "action",
+        "description": "Move the mouse out of the viewport"
+      },
+      {
+        "type": "action",
+        "description": "Repeat moving the mouse in and out of the viewport several times"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the 3D background continues to render and animate without freezing or disappearing"
+      }
+    ],
+    "priority": "Low"
+  }
+]

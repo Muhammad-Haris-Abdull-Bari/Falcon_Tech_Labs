@@ -1,0 +1,18 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "executionArgs": {
+    "projectName": "Falcon_Tech_Labs",
+    "projectPath": "c:\\Users\\aaa\\Desktop\\custom-website-projucts\\Falcon_Tech_Labs",
+    "testIds": [],
+    "additionalInstruction": "Test the main landing page features: navigation, 3D background, smooth scrolling, and marquee interaction.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-TnE14LH8vyD4A8do5ciWE0F9qPN1BBueng8_3qAzUfvsiOUeyFQfnhP54rf23cevGXVvx5j9towe3acrTuqSvS-hkeSbwdAlZu32GlZ5w6cTuZXoAyzeFgErOM8rGB1jHvU"
+    }
+  },
+  "serverPort": 52603,
+  "proxy": "http://1e71fde8-b13e-49a7-93c8-e00602cde7c2:C36nJJlRBvq3pOxlcBN9WDp3jx1GU4LB@tun.testsprite.com:8080"
+}

@@ -16,9 +16,18 @@ export const Footer: React.FC = () => {
         borderTop: '1px solid #222'
       }}
     >
-      <h2 style={{ fontFamily: 'Syncopate', fontSize: '3rem', marginBottom: '1rem' }}>
+      <h2 style={{ marginBottom: '1.5rem' }}>
         <a href="#" style={{ color: 'inherit', textDecoration: 'none' }} className="magnetic">
-          M. HARIS
+          <img
+            src="/Images_&_Videos/PNG-LOGO-01.png"
+            alt="Falcon Tech Labs Logo"
+            style={{
+              height: '80px',
+              width: 'auto',
+              display: 'block',
+              transition: 'transform 0.3s var(--easing)'
+            }}
+          />
         </a>
       </h2>
       <p>© {new Date().getFullYear()}</p>

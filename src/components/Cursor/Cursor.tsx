@@ -5,12 +5,27 @@ import './Cursor.css';
 export const Cursor: React.FC = () => {
   const { x, y } = useMousePosition();
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   
+  useEffect(() => {
+    const checkTouch = () => {
+      const touch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      setIsTouchDevice(touch);
+      if (!touch) {
+        document.documentElement.classList.add('no-touch');
+      } else {
+        document.documentElement.classList.remove('no-touch');
+      }
+    };
+    checkTouch();
+  }, []);
+
   // Custom lerp for smooth magnetic cursor
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const requestRef = useRef<number>();
 
   useEffect(() => {
+    if (isTouchDevice) return;
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor;
     };
@@ -51,6 +66,8 @@ export const Cursor: React.FC = () => {
       document.removeEventListener('mouseout', handleMouseOut);
     };
   }, []);
+
+  if (isTouchDevice) return null;
 
   return (
     <div

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '../Button/Button';
 import './Navbar.css';
 
 const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -6,6 +7,8 @@ const alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const Navbar: React.FC = () => {
   const navRef = useRef<HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,12 +23,13 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.currentTarget;
     let iter = 0;
     const original = target.dataset.text || '';
-    
+
     // Clear any existing interval
     if ((target as any).intervalId) {
       clearInterval((target as any).intervalId);
@@ -49,7 +53,8 @@ export const Navbar: React.FC = () => {
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const target = e.currentTarget;
-    clearInterval((target as any).intervalId);
+    const intervalId = (target as any).intervalId;
+    if (intervalId) clearInterval(intervalId);
     target.innerText = target.dataset.text || '';
   };
 
@@ -72,7 +77,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav ref={navRef} className={`brutal-nav ${isScrolled ? 'scrolled' : ''}`}>
+    <nav ref={navRef} className={`brutal-nav ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-open' : ''}`}>
       <a
         href="#"
         className="nav-logo magnetic"
@@ -80,31 +85,42 @@ export const Navbar: React.FC = () => {
         onMouseMove={handleMagneticMove}
         onMouseLeave={handleMagneticLeave}
       >
-        M. HARIS
+        <img src="/Images_&_Videos/PNG-LOGO-01.png" alt="Falcon Tech Labs Logo" className="logo-img" />
       </a>
-      <ul className="nav-menu">
-        {['WORK', 'ABOUT', 'LABS'].map((item) => (
-          <li key={item}>
-            <a
-              href="#"
-              className="nav-link magnetic"
-              data-text={item}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onMouseMove={handleMagneticMove}
-            >
-              {item}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <button
-        className="cta-btn magnetic"
-        onMouseMove={handleMagneticMove}
-        onMouseLeave={handleMagneticLeave}
-      >
-        <span>LET'S TALK</span>
+
+      {/* Hamburger Toggle */}
+      <button className="menu-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
+        <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
+          <span></span>
+          <span></span>
+        </div>
       </button>
+
+      <div className={`nav-container ${isMenuOpen ? 'active' : ''}`}>
+        <ul className="nav-menu">
+          {['WORK', 'ABOUT', 'LABS'].map((item) => (
+            <li key={item}>
+              <a
+                href="#"
+                className="nav-link magnetic"
+                data-text={item}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onMouseMove={handleMagneticMove}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="nav-actions">
+          <Button>
+            LET'S TALK
+          </Button>
+        </div>
+      </div>
     </nav>
   );
 };
+
