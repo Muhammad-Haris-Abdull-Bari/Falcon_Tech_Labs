@@ -1,34 +1,57 @@
-#cursor {
+.cursor-element {
   position: fixed;
   top: 0;
   left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+#cursor-small {
   width: 20px;
   height: 20px;
   background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
   mix-blend-mode: difference;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s var(--easing), height 0.3s var(--easing);
 }
 
-#cursor.magnet {
-  width: 90px;
-  height: 90px;
-  background: transparent;
-  border: 1px solid var(--accent);
-  backdrop-filter: blur(0px);
-}
-
-#cursor.magnet::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 10px;
-  height: 10px;
+#cursor-big {
+  width: 110px;
+  height: 110px;
   background: var(--accent);
+  color: #fff;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#cursor-big p {
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Optional dot inside big cursor like requested image */
+#cursor-big::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: #fff;
   border-radius: 50%;
+}
+
+/* Hide custom cursor on mobile */
+@media only screen and (max-width: 768px) {
+  .cursor-element {
+    display: none;
+  }
 }

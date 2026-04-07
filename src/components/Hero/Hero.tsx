@@ -1,7 +1,7 @@
 import { Button } from '../Button/Button';
 import './Hero.css';
 
-const heroImage = new URL('../../../Images_&_Videos/681a11d87a2f3c51ac0610d2_umbra-12-scaled.avif', import.meta.url).href;
+const heroImage = new URL('../../../Images_&_Videos/umbra-12-scaled.avif', import.meta.url).href;
 
 export const Hero: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ export const Hero: React.FC = () => {
         </p>
         <div className="hero-actions">
           <Button id="cta-get-started">
-            LET'S TALK
+            Get Started
           </Button>
         </div>
       </div>

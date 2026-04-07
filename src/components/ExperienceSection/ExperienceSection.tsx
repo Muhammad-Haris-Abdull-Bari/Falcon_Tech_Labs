@@ -84,10 +84,11 @@ export const ExperienceSection: React.FC = () => {
   return (
     <section className="experience-section" ref={sectionRef}>
       <div className="experience-bg">
-        <img 
-          src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2070" 
-          alt="Modern Workspace" 
+        <img
+          src="../Images_&_Videos/ExperienceSection.jpg"
+          alt="Modern Workspace"
         />
+        <div className="experience-overlay" />
       </div>
 
       <div className="floating-ball" ref={ballRef} />
@@ -95,7 +96,7 @@ export const ExperienceSection: React.FC = () => {
       {/* Stats Circles */}
       <div className="stats-container">
         {stats.map((stat, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="stat-circle"
             initial={{ opacity: 0, y: 30 }}
@@ -112,7 +113,7 @@ export const ExperienceSection: React.FC = () => {
       {/* Glass Cards */}
       <div className="cards-grid">
         {cards.map((card, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="glass-card"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -132,7 +133,7 @@ export const ExperienceSection: React.FC = () => {
       {/* Badges */}
       <div className="badges-container">
         {badges.map((text, index) => (
-          <motion.div 
+          <motion.div
             key={index}
             className="badge"
             initial={{ opacity: 0, x: -20 }}

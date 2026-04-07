@@ -15,6 +15,7 @@ import { SectionDark } from './components/SectionDark/SectionDark';
 import { Footer } from './components/Footer/Footer';
 import { Background3D } from './components/Background3D/Background3D';
 import { ExperienceSection } from './components/ExperienceSection/ExperienceSection';
+import { CaseStudiesSection } from './components/CaseStudiesSection/CaseStudiesSection';
 
 const App: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -86,12 +87,14 @@ const App: React.FC = () => {
             WE BUILD <span>DIGITAL EXPERIENCES</span> THAT DEFY GRAVITY. NO TEMPLATES. NO LIMITS. JUST <span>PURE CODE</span> AND <span>RAW AESTHETICS.</span>
           </SectionDark>
 
-          <SectionDark align="right">
+          {/* <SectionDark align="right">
             INTERACTION<br />
             <span>REDEFINED</span>
-          </SectionDark>
+          </SectionDark> */}
 
           <ExperienceSection />
+
+          <CaseStudiesSection />
 
           {/* Footer Section */}
           <Footer />

@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { useMousePosition } from '../../hooks/useMousePosition';
 import './Cursor.css';
 
 export const Cursor: React.FC = () => {
   const { x, y } = useMousePosition();
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorSmallRef = useRef<HTMLDivElement>(null);
+  const cursorBigRef = useRef<HTMLDivElement>(null);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   
   useEffect(() => {
@@ -13,69 +16,75 @@ export const Cursor: React.FC = () => {
       setIsTouchDevice(touch);
       if (!touch) {
         document.documentElement.classList.add('no-touch');
-      } else {
-        document.documentElement.classList.remove('no-touch');
       }
     };
     checkTouch();
   }, []);
 
-  // Custom lerp for smooth magnetic cursor
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const requestRef = useRef<number>();
-
-  useEffect(() => {
+  useGSAP(() => {
     if (isTouchDevice) return;
-    const lerp = (start: number, end: number, factor: number) => {
-      return start + (end - start) * factor;
-    };
 
-    const animate = () => {
-      setCursorPos((prev) => ({
-        x: lerp(prev.x, x, 0.15),
-        y: lerp(prev.y, y, 0.15),
-      }));
-      requestRef.current = requestAnimationFrame(animate);
-    };
+    // Follow mouse
+    gsap.set([cursorSmallRef.current, cursorBigRef.current], {
+      x: x,
+      y: y
+    });
 
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current!);
-  }, [x, y]);
-
-  // Handle magnetic hover globally
-  useEffect(() => {
-    const handleMouseOver = (e: MouseEvent) => {
+    // Hover detection logic
+    const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (target.closest('.magnetic')) {
-        cursorRef.current?.classList.add('magnet');
+      const isTrigger = target.closest('.view-more-trigger');
+      const isMagnetic = target.closest('.magnetic');
+
+      const tl = gsap.timeline({
+        defaults: { duration: 0.4, ease: "power2.out" }
+      });
+
+      if (isTrigger) {
+        // Expand to "View More" big cursor
+        tl.to(cursorSmallRef.current, { opacity: 0, scale: 0 }, 0)
+          .to(cursorBigRef.current, { opacity: 1, scale: 1 }, 0);
+      } else if (isMagnetic) {
+        // Magnetic small cursor (existing behavior)
+        tl.to(cursorSmallRef.current, { 
+          opacity: 1, 
+          scale: 4, 
+          backgroundColor: 'transparent', 
+          border: '1px solid var(--accent)' 
+        }, 0)
+          .to(cursorBigRef.current, { opacity: 0, scale: 0 }, 0);
+      } else {
+        // Default small cursor
+        tl.to(cursorSmallRef.current, { 
+          opacity: 1, 
+          scale: 1, 
+          backgroundColor: 'var(--accent)', 
+          border: '0px solid transparent' 
+        }, 0)
+          .to(cursorBigRef.current, { opacity: 0, scale: 0 }, 0);
       }
     };
-    
-    const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('.magnetic')) {
-        cursorRef.current?.classList.remove('magnet');
-      }
-    };
 
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseout', handleMouseOut);
-
-    return () => {
-      document.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseout', handleMouseOut);
-    };
-  }, []);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [x, y, isTouchDevice]);
 
   if (isTouchDevice) return null;
 
   return (
-    <div
-      id="cursor"
-      ref={cursorRef}
-      style={{
-        transform: `translate(${cursorPos.x}px, ${cursorPos.y}px) translate(-50%, -50%)`
-      }}
-    />
+    <>
+      <div 
+        ref={cursorSmallRef} 
+        id="cursor-small" 
+        className="cursor-element"
+      />
+      <div 
+        ref={cursorBigRef} 
+        id="cursor-big" 
+        className="cursor-element"
+      >
+        <p>View More</p>
+      </div>
+    </>
   );
 };
