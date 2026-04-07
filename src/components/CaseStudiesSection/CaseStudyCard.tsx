@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './CaseStudiesSection.module.css';
 
+
 interface Stat {
   value: string;
   label: string;
@@ -23,7 +24,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   stats
 }) => {
   return (
-    <motion.div 
+    <motion.div
       className={`${styles.card} view-more-trigger`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
